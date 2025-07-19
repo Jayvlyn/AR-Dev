@@ -6,6 +6,7 @@ public class LifeManager : MonoBehaviour
     [SerializeField] private int initialCount;
     private LifeTracker tracker;
     [SerializeField] private LifeSpawner spawner;
+    public static Action OnAllLivesLost;
 
     private void Awake()
     {
@@ -16,14 +17,21 @@ public class LifeManager : MonoBehaviour
         }
     }
 
+    private void CheckAllLost(int remaining)
+    {
+        if(remaining <= 0) OnAllLivesLost?.Invoke();
+    }
+
     private void OnEnable()
     {
         LifeVisual.OnLifeRemoved += OnLifeLost;
+        LifeTracker.OnLifeCountChanged += CheckAllLost;
     }
 
     private void OnDisable()
     {
         LifeVisual.OnLifeRemoved -= OnLifeLost;
+        LifeTracker.OnLifeCountChanged -= CheckAllLost;
     }
 
     private void OnLifeLost()
