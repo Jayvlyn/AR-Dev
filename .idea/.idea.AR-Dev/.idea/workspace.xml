@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f44af0f6-564f-4424-9910-d52c77cc33f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/LifeSystem/LifeSpawner.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/LifeSystem/LifeSpawner.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/LifeSystem/LifeVisual.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/LifeSystem/LifeVisual.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/LifeSystem/RandomSpawnPoint.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/LifeSystem/RandomSpawnPoint.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.AR-Dev/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AR-Dev/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/LifeSystem/LifeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/LifeSystem/LifeManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/LifeSystem/LifeTestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/LifeSystem/LifeTestScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
