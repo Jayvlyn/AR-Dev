@@ -109,6 +109,13 @@ public class WaveController : MonoBehaviour
     private void NextWave()
     {
         enemyStrength++;
+
+        if (enemyWaveValues[currentWave] == null)
+        {
+            Debug.LogWarning($"There isn't a wave {currentWave}");
+            return;
+        }
+
         if (enemyStrength == enemyWaveValues[currentWave].strengthToEnterWave)
         {
             enemyValues = enemyWaveValues[currentWave].GetWaveValues();
