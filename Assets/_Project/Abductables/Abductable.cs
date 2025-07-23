@@ -7,7 +7,9 @@ using UnityEngine.Events;
 
 public class Abducatable : MonoBehaviour
 {
-    [SerializeField] private UnityEvent<AbductionState> OnAbductionStateChanged;
+    [SerializeField] private UnityEvent OnAbductionStart;
+    [SerializeField] private UnityEvent OnAbductionComplete;
+    [SerializeField] private UnityEvent OnAbductionFail;
     public Abductor Abductor { get; private set; }
     private void OnEnable()
     {
@@ -22,18 +24,19 @@ public class Abducatable : MonoBehaviour
     public void StartAbduction(Abductor abductor)
     {
         Abductor = abductor;
-        OnAbductionStateChanged?.Invoke(AbductionState.Start);
+        OnAbductionStart?.Invoke();
     }
 
     [Button("Abduct")]
     public void CompleteAbduction()
     {
-        OnAbductionStateChanged?.Invoke(AbductionState.Complete);
+        OnAbductionComplete?.Invoke();
         Abductor = null;
+        
     }
     public void FailAbduction()
     {
-        OnAbductionStateChanged?.Invoke(AbductionState.Fail);
+        OnAbductionFail?.Invoke();
         AbductionController.Return(this);
         Abductor = null;
     }

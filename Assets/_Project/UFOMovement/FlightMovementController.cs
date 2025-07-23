@@ -85,6 +85,9 @@ public class TargetedFlight : BaseFlightMovement
     public override void OnEnter()
     {
         target = flightMovementController.Target;
+        Vector3 direction = target.position - flightMovementController.transform.position;
+        direction = new Vector3(direction.z, 0f, -direction.x);
+        rigidbody.AddForce(direction * (thrustForce * 40));
     }
 
     public override void OnUpdate()

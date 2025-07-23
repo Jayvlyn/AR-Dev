@@ -12,6 +12,17 @@ public class WanderingMovement : MonoBehaviour
     private float timeOfDestinationChange;
     private bool reachedDestination;
 
+
+    private bool inbeam;
+    public void GoUpwards()
+    {
+        inbeam = true;
+    }
+    public void StopGoUpwards()
+    {
+        inbeam = false;
+    }
+
     private void Start()
     {
         targetPosition = WanderableArea.activeWanderableArea.GetRandomPosition();
@@ -19,9 +30,17 @@ public class WanderingMovement : MonoBehaviour
 
     private void Update()
     {
-        AttemptApproachDestination();
-        CheckReachDestination();
-        AttemptChangeDestination();
+        if (inbeam)
+        {
+            transform.Translate(Vector3.up * Time.deltaTime);
+        }
+        else
+        {
+            AttemptApproachDestination();
+            CheckReachDestination();
+            AttemptChangeDestination();
+            
+        }
     }
 
     private void AttemptApproachDestination()

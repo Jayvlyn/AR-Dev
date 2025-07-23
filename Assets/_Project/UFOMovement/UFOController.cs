@@ -21,7 +21,7 @@ public class UFOController : MonoBehaviour
     private void AttemptCompleteExtraction()
     {
         if (!attacking) return;
-        float yTarget = flightMovementController.transform.position.y;
+        float yTarget = abductorController.GetTarget().transform.position.y;
         if (yTarget > transform.position.y)
         {
             CompletedExtraction();
