@@ -22,3 +22,13 @@ Spawner
     
 AR INPUT
     Need to test clicking on the screen when in AR mode on tablet
+    Objects render infront of environment so we need to do something about far away objects and the tractor beam size
+    
+Gameloop
+    Possibly a start screen
+    Need to do something on death event call - can just show YOU DIED panel or move scene
+    
+Effects
+    Have screen blink when life is lost - just hook into live lost event
+    Better beam particles
+    Game over mother ship decent
