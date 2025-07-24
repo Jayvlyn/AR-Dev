@@ -1,0 +1,24 @@
+UFO Collision Problem.
+    UFOs are running into each other
+    But we need collision for smashing them together
+
+Cow Plane Collision Problem
+    We need to get the AR surface somehow and give it to the wandering plane os the cows can wonder
+    They also need to move better and have the animations added
+    They also need to drop back down to the ground after being slightly lifted. This may be solved once actual pathfinding is in
+    
+Gameplay Problem
+    The last cow is too easy to protect
+    Possibly need a ship that just lasers down a cow, instant death and any type of targeting so multiple can fire at the same time
+    
+Consumables
+    Need spawning for those
+    Need to add lock on target to those
+    Already built lock on for grabbing and damagable system for the UFOs (smash with those will just do 1 damage - tanker can do like 10)
+    
+Spawner
+    Need to build 3 health mothership UFO and add to spawner
+    Spawner is throwing errors
+    
+AR INPUT
+    Need to test clicking on the screen when in AR mode on tablet
