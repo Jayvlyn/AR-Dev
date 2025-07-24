@@ -28,11 +28,12 @@ public class WanderingMovement : MonoBehaviour
         targetPosition = WanderableArea.activeWanderableArea.GetRandomPosition();
     }
 
+    [SerializeField] private float upSpeed = 0.1f;
     private void Update()
     {
         if (inbeam)
         {
-            transform.Translate(Vector3.up * Time.deltaTime);
+            transform.Translate(Vector3.up * (Time.deltaTime * upSpeed));
         }
         else
         {

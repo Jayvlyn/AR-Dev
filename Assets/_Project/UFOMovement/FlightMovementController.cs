@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = Unity.Mathematics.Random;
 
 public class FlightMovementController : MonoBehaviour
 {
@@ -29,6 +30,11 @@ public class FlightMovementController : MonoBehaviour
     {
         Target = _target;
         ChangeState(targetedFlight);
+    }
+
+    public void GoIdle()
+    {
+        ChangeState(idleFlight);
     }
 }
 
@@ -60,14 +66,20 @@ public abstract class BaseFlightMovement
 [System.Serializable]
 public class IdleFlight : BaseFlightMovement
 {
+    [SerializeField] private Rigidbody rigidbody;
+    [SerializeField] private float thrustForce;
+    private int rotationDirectionMultiplier;
     public override void OnEnter()
     {
-        
+        //Set rotation multipler to -1 or 1
+        rotationDirectionMultiplier = UnityEngine.Random.Range(0, 2) > 0 ? 1 : -1;
     }
 
     public override void OnUpdate()
     {
-        
+        Vector3 direction = -flightMovementController.transform.position;
+        direction = new Vector3(direction.z, 0f, -direction.x);
+        rigidbody.AddForce(direction * (thrustForce * rotationDirectionMultiplier));
     }
 
     public override void OnExit()

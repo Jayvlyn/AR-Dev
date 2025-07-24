@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 792683043175056668}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -11.4689, z: -0}
-  m_LocalScale: {x: 2, y: 12.4689, z: 2}
+  m_LocalPosition: {x: 0, y: -26.606, z: -0}
+  m_LocalScale: {x: 2, y: 27.606144, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6398367852156913926}
@@ -194,7 +194,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 1
+  scalingMode: 0
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -4930,9 +4930,12 @@ GameObject:
   - component: {fileID: 2833545642467917800}
   - component: {fileID: 5991145911805915043}
   - component: {fileID: 8065927094481885023}
+  - component: {fileID: 775056272804756418}
   - component: {fileID: 7422012533820045031}
   - component: {fileID: 7262051983802105445}
   - component: {fileID: 5178141185028457963}
+  - component: {fileID: 8144457594401602349}
+  - component: {fileID: 5197106421855052661}
   m_Layer: 0
   m_Name: UFO
   m_TagString: Untagged
@@ -4950,8 +4953,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.39, y: 12.64, z: 11.78}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6398367852156913926}
   - {fileID: 8314380087721844461}
@@ -4986,9 +4989,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b87623e51d0563449bca6ff2a8bd527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idleFlight:
+    rigidbody: {fileID: 7422012533820045031}
+    thrustForce: 4
   targetedFlight:
     rigidbody: {fileID: 7422012533820045031}
     thrustForce: 8
+--- !u!114 &775056272804756418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990950011816828631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33cf7055896b4c8abdd5949f0a92414d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ufoController: {fileID: 5991145911805915043}
+  OnSmacked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5197106421855052661}
+        m_TargetAssemblyTypeName: Damagable, Assembly-CSharp
+        m_MethodName: TakeDamage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!54 &7422012533820045031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4998,7 +5032,7 @@ Rigidbody:
   m_GameObject: {fileID: 1990950011816828631}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 2.6
+  m_Drag: 11.49
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -5014,7 +5048,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &7262051983802105445
 MonoBehaviour:
@@ -5042,6 +5076,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkForTargetDelay: 1
+--- !u!135 &8144457594401602349
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990950011816828631}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2.14
+  m_Center: {x: 0, y: 0.99, z: 0}
+--- !u!114 &5197106421855052661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990950011816828631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aefb1a5960644508e3a9cdbafef261e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5991145911805915043}
+        m_TargetAssemblyTypeName: UFOController, Assembly-CSharp
+        m_MethodName: OnRemoval
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5873741740026656382
 GameObject:
   m_ObjectHideFlags: 0

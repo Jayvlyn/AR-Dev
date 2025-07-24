@@ -47,7 +47,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4554670277246772531
 Transform:
   m_ObjectHideFlags: 0
@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee0eda9c45e40059971096154007f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualPrefab: {fileID: 4134874534048531317, guid: 222b6c14970f41542a17a1b047a04b6f,
+  visualPrefab: {fileID: 4179359774280675341, guid: a80af412cc2df9e488132755090bf0b0,
     type: 3}
   spawnMethod: {fileID: 852311889988227063}
 --- !u!114 &852311889988227063
