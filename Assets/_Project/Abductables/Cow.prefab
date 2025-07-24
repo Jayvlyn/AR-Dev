@@ -91,7 +91,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -183,6 +183,7 @@ MonoBehaviour:
   moveSpeed: 3
   tolerance: 0.5
   destinationChangeDelay: {x: 4.1616783, y: 13.0539}
+  upSpeed: 0.1
 --- !u!1001 &1439639862021302062
 PrefabInstance:
   m_ObjectHideFlags: 0
