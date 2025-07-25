@@ -27,9 +27,11 @@ public class WanderingMovement : MonoBehaviour
 
     private void Update()
     {
-        AttemptApproachDestination();
-        CheckReachDestination();
-        AttemptChangeDestination();
+		AttemptApproachDestination();
+		CheckReachDestination();
+		AttemptChangeDestination();
+
+		ProcessMoveState();
     }
 
     private void AttemptApproachDestination()
@@ -60,7 +62,22 @@ public class WanderingMovement : MonoBehaviour
         if(reachedDestination) timeOfDestinationChange = Time.time + Random.Range(destinationChangeDelay.x, destinationChangeDelay.y);
     }
 
-    private void AttemptChangeDestination()
+    private void ProcessMoveState()
+    {
+		switch (currentMoveState)
+		{
+			case MoveState.IDLE:
+				break;
+			case MoveState.WALKING:
+				break;
+			case MoveState.EATING:
+				break;
+			case MoveState.FLOATING:
+				break;
+		}
+	}
+
+	private void AttemptChangeDestination()
     {
         if (!reachedDestination) return;
 
