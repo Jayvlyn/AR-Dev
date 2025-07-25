@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8738350445794677331}
   - component: {fileID: 8793237367966138841}
   - component: {fileID: 3062539059865469261}
+  - component: {fileID: 4408642325296592784}
   m_Layer: 0
   m_Name: Cow
   m_TagString: Untagged
@@ -184,6 +185,29 @@ MonoBehaviour:
   moveSpeed: 3
   tolerance: 0.5
   destinationChangeDelay: {x: 4.1616783, y: 13.0539}
+  animator: {fileID: 4408642325296592784}
+--- !u!95 &4408642325296592784
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3255274070335067347}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f96cbb772772377479f2e4082297db0d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1439639862021302062
 PrefabInstance:
   m_ObjectHideFlags: 0
