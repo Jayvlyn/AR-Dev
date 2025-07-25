@@ -5,6 +5,12 @@ using Random = UnityEngine.Random;
 
 public class WanderingMovement : MonoBehaviour
 {
+    public enum MoveState
+    {
+        IDLE, WALKING, EATING, FLOATING
+    }
+
+
     private Vector3 targetPosition;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float tolerance;
