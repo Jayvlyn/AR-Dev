@@ -18,8 +18,9 @@ public class WanderingMovement : MonoBehaviour
     private float timeOfDestinationChange;
     private bool reachedDestination;
     [SerializeField] Animator animator;
+    [SerializeField] Transform pivot;
     private float timeOfEat;
-
+    
 
     public void GoUpwards()
     {
@@ -100,7 +101,10 @@ public class WanderingMovement : MonoBehaviour
 			case State.EATING:
 				break;
 			case State.BEING_ABDUCTED:
-				break;
+                xRotSpeed = 0;
+                yRotSpeed = 0;
+                zRotSpeed = 0;
+                break;
 			case State.FALLING:
 				break;
 		}
@@ -121,7 +125,7 @@ public class WanderingMovement : MonoBehaviour
                 timeOfEat = Time.time;
 				break;
 			case State.BEING_ABDUCTED:
-				break;
+                break;
 			case State.FALLING:
 				break;
 		}
@@ -145,12 +149,26 @@ public class WanderingMovement : MonoBehaviour
                 }
 				break;
 			case State.BEING_ABDUCTED:
-				transform.Translate(Vector3.up * Time.deltaTime);
+				transform.Translate(Vector3.up * Time.deltaTime, Space.World);
+
+                //transform.RotateAround(pivot.position, new Vector3(1,0,0), xRotSpeed);
+                transform.RotateAround(pivot.position, transform.up, yRotSpeed);
+                //transform.RotateAround(pivot.position, transform.right, zRotSpeed);
+                //xRotSpeed += Time.deltaTime * 1.1f;
+                yRotSpeed += Time.deltaTime * 1.5f;
+                //zRotSpeed += Time.deltaTime * 4.0f;
+
+
 				break;
 			case State.FALLING:
 				break;
 		}
 	}
+
+    float xRotSpeed = 0;
+    float yRotSpeed = 0;
+    float zRotSpeed = 0;
+
 
 	string currentTrigger;
 	void SetTrigger(string triggerName)

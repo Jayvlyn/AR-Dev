@@ -5,8 +5,9 @@ public class Abductor : MonoBehaviour
 {
     [SerializeField, Min(0)] private float checkForTargetDelay = 1f;
     private float timeOfLastTargetCycleCheck;
-    private Abducatable activeTarget;
-    
+
+    [HideInInspector] public Abducatable activeTarget;
+    [HideInInspector] public float startingDist;
 
     private void Update()
     {
@@ -47,6 +48,7 @@ public class Abductor : MonoBehaviour
     {
         if (!HasTarget()) return false;
         activeTarget.StartAbduction(this);
+        startingDist = GetHeightAboveTarget();
         return true;
     }
 
@@ -58,5 +60,10 @@ public class Abductor : MonoBehaviour
         else activeTarget.FailAbduction();
         activeTarget = null;
 
+    }
+
+    public float GetHeightAboveTarget()
+    {
+        return transform.position.y - activeTarget.transform.position.y;
     }
 }

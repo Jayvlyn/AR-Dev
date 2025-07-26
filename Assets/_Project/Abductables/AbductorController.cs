@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AbductorController : MonoBehaviour
 {
-    [SerializeField] private Abductor abductor;
+    public Abductor abductor;
 
     public void Abduct()
     {
