@@ -151,12 +151,12 @@ public class WanderingMovement : MonoBehaviour
 			case State.BEING_ABDUCTED:
 				transform.Translate(Vector3.up * Time.deltaTime, Space.World);
 
-                //transform.RotateAround(pivot.position, new Vector3(1,0,0), xRotSpeed);
-                transform.RotateAround(pivot.position, transform.up, yRotSpeed);
+                //transform.RotateAround(pivot.position, transform.forward, xRotSpeed);
+                transform.RotateAround(pivot.position, new Vector3(Random.Range(0f,1f), Random.Range(0f, 1f), Random.Range(0f, 1f)), yRotSpeed);
                 //transform.RotateAround(pivot.position, transform.right, zRotSpeed);
                 //xRotSpeed += Time.deltaTime * 1.1f;
                 yRotSpeed += Time.deltaTime * 1.5f;
-                //zRotSpeed += Time.deltaTime * 4.0f;
+                //zRotSpeed += Time.deltaTime * 0.1f;
 
 
 				break;
