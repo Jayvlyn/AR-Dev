@@ -14,52 +14,78 @@ public class WaveController : MonoBehaviour
     private int currentWave;
 
     [Header("Enemy things")]
-    private WaveValues enemyValues;
     [SerializeField, Tooltip("Wave 1 NEEDS to have a strength to enter of 1")] private List<WaveValueSpecifier> enemyWaveValues = new();
+    private WaveValues enemyValues;
     private int enemyStrength;
     private int currentEnemyPoints;
 
-    private float pointRecoverTimer;
+    private float enemyPointRecoverTimer;
     private float enemySpawnTimer;
 
     private int nextEnemyPointValueToSpawn;
+
+    [Header("Item things")]
+    [SerializeField, Tooltip("Wave 1 NEEDS to have a strength to enter of 1")] private List<WaveValueSpecifier> itemWaveValues = new();
+    private WaveValues itemValues;
+    private int itemStrength;
+    private int currentItemPoints;
+
+    private float itemPointRecoverTimer;
+    private float itemSpawnTimer;
+
+    private int nextItemPointValueToSpawn;
 
     private void Start()
     {
         currentEnemyPoints = enemyValues.maxPoints;
         InitializeValues();
         nextEnemyPointValueToSpawn = SetNextSpawnValue(enemyValues.spawnableList);
+        nextItemPointValueToSpawn = SetNextSpawnValue(itemValues.spawnableList);
     }
 
     private void Update()
     {
         TimeSurvived += Time.deltaTime;
 
-        CheckEnemyTimers();
+        CheckSpawnTimer(ref enemySpawnTimer, enemyValues, ref currentEnemyPoints, ref nextEnemyPointValueToSpawn);
+        CheckSpawnTimer(ref itemSpawnTimer, itemValues, ref currentItemPoints, ref nextItemPointValueToSpawn);
+        CheckPointRecoveryTimer(ref enemyPointRecoverTimer, enemyValues, ref currentEnemyPoints);
+        CheckPointRecoveryTimer(ref itemPointRecoverTimer, itemValues, ref currentItemPoints);
         CheckWaveTimers();
     }
 
-    private void CheckEnemyTimers()
+    private void CheckSpawnTimer(ref float timerToCheck, WaveValues values, ref int currentPoints, ref int nextToSpawn)
     {
-        enemySpawnTimer -= Time.deltaTime;
+        timerToCheck -= Time.deltaTime;
         
 
 
-        if (enemySpawnTimer <= 0 && currentEnemyPoints >= nextEnemyPointValueToSpawn)
+        if (timerToCheck <= 0 && currentPoints >= nextToSpawn)
         {
-            SpawnNewItem(nextEnemyPointValueToSpawn, enemyValues.spawnableList, ref currentEnemyPoints);
-            enemySpawnTimer = enemyValues.timeBetweenSpawns;
-            Debug.Log("Spawned Item");
-            nextEnemyPointValueToSpawn = SetNextSpawnValue(enemyValues.spawnableList);
+            SpawnNewItem(nextToSpawn, values.spawnableList, ref currentPoints);
+            timerToCheck = values.timeBetweenSpawns;
+            nextToSpawn = SetNextSpawnValue(values.spawnableList);
         }
 
-        pointRecoverTimer -= Time.deltaTime;
+        enemyPointRecoverTimer -= Time.deltaTime;
 
-        if (pointRecoverTimer <= 0)
+        if (enemyPointRecoverTimer <= 0)
         {
             currentEnemyPoints += enemyValues.pointRecoverAmount;
             currentEnemyPoints = Mathf.Clamp(currentEnemyPoints, 0, enemyValues.maxPoints);
-            pointRecoverTimer = enemyValues.pointRecoverLength;
+            enemyPointRecoverTimer = enemyValues.pointRecoverLength;
+        }
+    }
+
+    private void CheckPointRecoveryTimer(ref float timerToCheck, WaveValues values, ref int currentPoints)
+    {
+        timerToCheck -= Time.deltaTime;
+
+        if (timerToCheck <= 0)
+        {
+            currentPoints += values.pointRecoverAmount;
+            currentPoints = Mathf.Clamp(currentPoints, 0, values.maxPoints);
+            timerToCheck = values.pointRecoverLength;
         }
     }
 
@@ -126,25 +152,41 @@ public class WaveController : MonoBehaviour
 
     private void NextWave()
     {
+        #region Enemy Wave Check
         enemyStrength++;
+        itemStrength++;
 
         if (enemyWaveValues[currentWave] == null)
         {
-            Debug.LogWarning($"There isn't a wave {currentWave}");
+            Debug.LogWarning($"There isn't an enemy wave for {currentWave}");
             return;
         }
-
-        if (enemyStrength == enemyWaveValues[currentWave].strengthToEnterWave)
+        else if (enemyStrength == enemyWaveValues[currentWave].strengthToEnterWave)
         {
             enemyValues = enemyWaveValues[currentWave].GetWaveValues();
             currentEnemyPoints = enemyValues.maxPoints;
             enemySpawnTimer = 0;
-            pointRecoverTimer = enemyValues.pointRecoverLength;
+            enemyPointRecoverTimer = enemyValues.pointRecoverLength;
             currentWave++;
         }
+
+        if (itemWaveValues[currentWave] == null)
+        {
+            Debug.LogWarning($"There isn't an item wave for {currentWave}");
+            return;
+        }
+        else if (itemStrength == itemWaveValues[currentWave].strengthToEnterWave)
+        {
+            itemValues = enemyWaveValues[currentWave].GetWaveValues();
+            currentItemPoints = itemValues.maxPoints - 1;
+            itemSpawnTimer = 0;
+            itemPointRecoverTimer = itemValues.pointRecoverLength;
+        }
+        #endregion
     }
 }
 
+#region Classes
 [Serializable]
 public class Spawnable
 {
@@ -155,7 +197,7 @@ public class Spawnable
 [Serializable]
 public class WaveValueSpecifier
 {
-    public int strengthToEnterWave;
+    [Tooltip("For items, make this value the same as the enemies")]public int strengthToEnterWave;
     [SerializeField] private WaveValues WaveValues;
 
     public WaveValues GetWaveValues()
@@ -173,3 +215,5 @@ public struct WaveValues
     public float pointRecoverLength;
     public float timeBetweenSpawns;
 }
+
+#endregion
