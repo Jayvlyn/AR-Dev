@@ -10,9 +10,23 @@ public class UFOController : MonoBehaviour
     [SerializeField] private float hoveringTolerance;
     private bool attacking;
     private bool canStartBeam;
+    private bool allowedToAttack = true;
+
+    public void StopAttacking()
+    {
+        allowedToAttack = false;
+        abductorController.LoseTarget();
+        beam.Hide();
+    }
+
+    public void AllowAttacking()
+    {
+        allowedToAttack = true;
+    }
 
     private void Update()
     {
+        if (!allowedToAttack) return;
         AttemptAttack();
         AttemptStartBeam();
         AttemptCompleteExtraction();
@@ -74,6 +88,7 @@ public class UFOController : MonoBehaviour
         attacking = false;
         beam.Hide();
         abductorController.FinalizeAbduction();
+        flightMovementController.GoIdle();
     }
 
     
@@ -95,5 +110,6 @@ public class UFOController : MonoBehaviour
     public void OnRemoval()
     {
         abductorController.LoseTarget();
+        Destroy(this.gameObject);
     }
 }

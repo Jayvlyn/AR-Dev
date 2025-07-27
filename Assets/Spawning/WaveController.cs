@@ -89,11 +89,29 @@ public class WaveController : MonoBehaviour
         {
             GameObject spawnable = spawnableThings[UnityEngine.Random.Range(0, spawnableThings.Count)];
             currentPoints -= value;
-            Instantiate(spawnable, new Vector3(UnityEngine.Random.Range(-10, 10), 0, UnityEngine.Random.Range(-10, 10)), transform.rotation);
+            Instantiate(spawnable, GetSpawnPointInBoundsRandomly(), transform.rotation);
             return;
         }
 
         Debug.LogWarning($"Couldn't find a spawnable of value {value}");
+    }
+
+    [SerializeField] private Bounds spawnArea;
+
+    private Vector3 GetSpawnPointInBoundsRandomly()
+    {
+        return transform.position + new Vector3(
+            spawnArea.min.x + UnityEngine.Random.Range(-spawnArea.size.x, spawnArea.size.x),
+            spawnArea.min.y + UnityEngine.Random.Range(-spawnArea.size.y, spawnArea.size.y),
+            spawnArea.min.z + UnityEngine.Random.Range(-spawnArea.size.z, spawnArea.size.z)
+        );
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position + spawnArea.center, spawnArea.size);
     }
 
     private void InitializeValues()
