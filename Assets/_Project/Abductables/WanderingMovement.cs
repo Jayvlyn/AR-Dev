@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using NaughtyAttributes;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,6 +15,7 @@ public class WanderingMovement : MonoBehaviour
     private Vector3 targetPosition;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float abductSpeed;
+    [SerializeField] private float fallSpeed;
     [SerializeField] private float tolerance;
     [SerializeField, MinMaxSlider(0f, 30)] private Vector2 destinationChangeDelay;
     private float timeOfDestinationChange;
@@ -21,7 +23,8 @@ public class WanderingMovement : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] Transform pivot;
     private float timeOfEat;
-    
+    private Vector3 startScale;
+    private float startHeight;
 
     public void GoUpwards()
     {
@@ -35,6 +38,8 @@ public class WanderingMovement : MonoBehaviour
     private void Start()
     {
         ChangeState(State.WALKING);
+        startScale = transform.localScale;
+        startHeight = transform.position.y;
     }
 
     private void Update()
@@ -103,6 +108,8 @@ public class WanderingMovement : MonoBehaviour
 				break;
 			case State.BEING_ABDUCTED:
                 rotSpeed = 0;
+                StartCoroutine(RestoreScale(0.5f));
+                StartCoroutine(RestoreRotation(0.5f));
                 break;
 			case State.FALLING:
 				break;
@@ -126,6 +133,7 @@ public class WanderingMovement : MonoBehaviour
 			case State.BEING_ABDUCTED:
                 break;
 			case State.FALLING:
+                StartCoroutine(Fall());
 				break;
 		}
 	}
@@ -171,4 +179,47 @@ public class WanderingMovement : MonoBehaviour
 		animator.SetTrigger(triggerName); // Set the new trigger
 		currentTrigger = triggerName; // Remember the new one
 	}
+
+    private IEnumerator RestoreScale(float time)
+    {
+        Vector3 startScale = transform.localScale;
+        Vector3 targetScale = this.startScale;
+
+        float t = 0;
+        while (t < time)
+        {
+            t += Time.deltaTime;
+            float normalizedTime = Mathf.Clamp01(t / time);
+            transform.localScale = Vector3.Lerp(startScale, targetScale, normalizedTime);
+            yield return null;
+        }
+        transform.localScale = targetScale;
+    }
+
+    private IEnumerator RestoreRotation(float time)
+    {
+        Quaternion startRotation = transform.rotation;
+        Quaternion targetRotation = Quaternion.identity;
+
+        float t = 0;
+        while (t < time)
+        {
+            t += Time.deltaTime;
+            float normalizedTime = Mathf.Clamp01(t / time);
+            transform.rotation = Quaternion.Lerp(startRotation, targetRotation, normalizedTime);
+            yield return null;
+        }
+        transform.rotation = targetRotation;
+    }
+
+    private IEnumerator Fall()
+    {
+        while (transform.position.y > startHeight)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - Time.deltaTime * fallSpeed, transform.position.z);
+            yield return null;
+        }
+        ChangeState(State.IDLE);
+        transform.position = new Vector3(transform.position.x, startHeight, transform.position.z);
+    }
 }
