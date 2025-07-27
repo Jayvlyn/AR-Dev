@@ -8,6 +8,7 @@ public class Abductor : MonoBehaviour
 
     [HideInInspector] public Abducatable activeTarget;
     [HideInInspector] public float startingDist;
+    [HideInInspector] public float activeTargetStartScale;
 
     private void Update()
     {
@@ -21,6 +22,7 @@ public class Abductor : MonoBehaviour
         if (AbductionController.TryGetFreeAbductable(out var abductable))
         {
             activeTarget = abductable;
+            activeTargetStartScale = activeTarget.transform.localScale.x;
         }
     }
     private void PrepareTarget()

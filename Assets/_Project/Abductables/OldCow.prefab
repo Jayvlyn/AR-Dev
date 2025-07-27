@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 3062539059865469261}
   - component: {fileID: 4408642325296592784}
   m_Layer: 0
-  m_Name: Cow
+  m_Name: OldCow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,8 +63,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 122496650004235253}
   - {fileID: 4250303245069665698}
