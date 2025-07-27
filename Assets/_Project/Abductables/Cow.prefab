@@ -216,6 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   moveSpeed: 3
+  abductSpeed: 0.1
   tolerance: 0.5
   destinationChangeDelay: {x: 4.1616783, y: 13.0539}
   animator: {fileID: 4408642325296592784}

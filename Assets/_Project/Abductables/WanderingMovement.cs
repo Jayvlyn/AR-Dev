@@ -13,6 +13,7 @@ public class WanderingMovement : MonoBehaviour
 
     private Vector3 targetPosition;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float abductSpeed;
     [SerializeField] private float tolerance;
     [SerializeField, MinMaxSlider(0f, 30)] private Vector2 destinationChangeDelay;
     private float timeOfDestinationChange;
@@ -101,9 +102,7 @@ public class WanderingMovement : MonoBehaviour
 			case State.EATING:
 				break;
 			case State.BEING_ABDUCTED:
-                xRotSpeed = 0;
-                yRotSpeed = 0;
-                zRotSpeed = 0;
+                rotSpeed = 0;
                 break;
 			case State.FALLING:
 				break;
@@ -149,14 +148,9 @@ public class WanderingMovement : MonoBehaviour
                 }
 				break;
 			case State.BEING_ABDUCTED:
-				transform.Translate(Vector3.up * Time.deltaTime, Space.World);
-
-                //transform.RotateAround(pivot.position, transform.forward, xRotSpeed);
-                transform.RotateAround(pivot.position, new Vector3(Random.Range(0f,1f), Random.Range(0f, 1f), Random.Range(0f, 1f)), yRotSpeed);
-                //transform.RotateAround(pivot.position, transform.right, zRotSpeed);
-                //xRotSpeed += Time.deltaTime * 1.1f;
-                yRotSpeed += Time.deltaTime * 1.5f;
-                //zRotSpeed += Time.deltaTime * 0.1f;
+				transform.Translate(Vector3.up * abductSpeed * Time.deltaTime, Space.World);
+                transform.RotateAround(pivot.position, new Vector3(Random.Range(0f,1f), Random.Range(0f, 1f), Random.Range(0f, 1f)), rotSpeed);
+                rotSpeed += Time.deltaTime * 1.5f;
 
 
 				break;
@@ -165,9 +159,7 @@ public class WanderingMovement : MonoBehaviour
 		}
 	}
 
-    float xRotSpeed = 0;
-    float yRotSpeed = 0;
-    float zRotSpeed = 0;
+    float rotSpeed = 0;
 
 
 	string currentTrigger;
