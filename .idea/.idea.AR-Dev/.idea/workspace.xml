@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f44af0f6-564f-4424-9910-d52c77cc33f8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.AR-Dev/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AR-Dev/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DefaultVolumeProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DefaultVolumeProfile.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/UFOMovement/Notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UFOMovement/Notes.txt" afterDir="false" />
-    </list>
+    <list default="true" id="f44af0f6-564f-4424-9910-d52c77cc33f8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,7 +98,7 @@
       <workItem from="1753325875396" duration="5584000" />
       <workItem from="1753380426733" duration="685000" />
       <workItem from="1753645148586" duration="363000" />
-      <workItem from="1753721980340" duration="5352000" />
+      <workItem from="1753721980340" duration="5415000" />
     </task>
     <servers />
   </component>
