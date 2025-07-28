@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f44af0f6-564f-4424-9910-d52c77cc33f8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/UFOMovement/Notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UFOMovement/Notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AR-Dev/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AR-Dev/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/LockOn/LockOnController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/LockOn/LockOnController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/LockOn/LockingInputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/LockOn/LockingInputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/UFOMovement/UFO.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UFOMovement/UFO.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/_Game/ARGameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/_Game/ARGameScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,12 +42,13 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Game&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -97,6 +102,8 @@
       <workItem from="1753229807311" duration="9978000" />
       <workItem from="1753325875396" duration="5584000" />
       <workItem from="1753380426733" duration="685000" />
+      <workItem from="1753645148586" duration="363000" />
+      <workItem from="1753721980340" duration="1221000" />
     </task>
     <servers />
   </component>
