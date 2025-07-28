@@ -1,53 +1,54 @@
 using System;
+using System.Collections;
 using NaughtyAttributes;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class WanderingMovement : MonoBehaviour
 {
+    public enum State
+    {
+        IDLE, WALKING, EATING, BEING_ABDUCTED, FALLING
+    }
+    public State currentState;
+
     private Vector3 targetPosition;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float abductSpeed;
+    [SerializeField] private float fallSpeed;
     [SerializeField] private float tolerance;
     [SerializeField, MinMaxSlider(0f, 30)] private Vector2 destinationChangeDelay;
     private float timeOfDestinationChange;
     private bool reachedDestination;
+    [SerializeField] Animator animator;
+    [SerializeField] Transform pivot;
+    private float timeOfEat;
+    private Vector3 startScale;
+    private float startHeight;
 
-
-    private bool inbeam;
     public void GoUpwards()
     {
-        inbeam = true;
+        ChangeState(State.BEING_ABDUCTED);
     }
     public void StopGoUpwards()
     {
-        inbeam = false;
+        ChangeState(State.FALLING);
     }
 
     private void Start()
     {
-        targetPosition = WanderableArea.activeWanderableArea.GetRandomPosition();
+        ChangeState(State.WALKING);
+        startScale = transform.localScale;
+        startHeight = transform.position.y;
     }
 
-    [SerializeField] private float upSpeed = 0.1f;
     private void Update()
     {
-        if (inbeam)
-        {
-            transform.Translate(Vector3.up * (Time.deltaTime * upSpeed));
-        }
-        else
-        {
-            AttemptApproachDestination();
-            CheckReachDestination();
-            AttemptChangeDestination();
-            
-        }
+        ProcessState();
     }
 
-    private void AttemptApproachDestination()
+    private void ApproachDestination()
     {
-        if(reachedDestination) return;
-
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         RotateTowardsDestination();
     }
@@ -69,17 +70,156 @@ public class WanderingMovement : MonoBehaviour
     {
         if(reachedDestination) return;
         reachedDestination = (Vector3.Distance(transform.position, targetPosition) < tolerance);
-        if(reachedDestination) timeOfDestinationChange = Time.time + Random.Range(destinationChangeDelay.x, destinationChangeDelay.y);
+        if (reachedDestination)
+        {
+            timeOfDestinationChange = Time.time + Random.Range(destinationChangeDelay.x, destinationChangeDelay.y);
+            ChangeState(State.IDLE);
+        }
     }
 
     private void AttemptChangeDestination()
     {
-        if (!reachedDestination) return;
-
         if (Time.time > timeOfDestinationChange)
         {
-            targetPosition = WanderableArea.activeWanderableArea.GetRandomPosition();
-            reachedDestination = false;
+            ChangeState(State.WALKING);
         }
+        else
+        {
+            if(currentState == State.IDLE)
+            {
+                if(Random.Range(0,1000) == 0)
+                {
+                    ChangeState(State.EATING);
+                }
+            }
+        }
+    }
+
+    private void ChangeState(State newState)
+    {
+		switch (currentState) // exit
+		{
+			case State.IDLE:
+				break;
+			case State.WALKING:
+				SetTrigger("StopWalk");
+				break;
+			case State.EATING:
+				break;
+			case State.BEING_ABDUCTED:
+                rotSpeed = 0;
+                StartCoroutine(RestoreScale(0.5f));
+                StartCoroutine(RestoreRotation(0.5f));
+                break;
+			case State.FALLING:
+				break;
+		}
+
+		currentState = newState;
+
+		switch (newState)
+		{
+			case State.IDLE:
+				break;
+			case State.WALKING:
+				targetPosition = WanderableArea.activeWanderableArea.GetRandomPosition();
+				reachedDestination = false;
+				SetTrigger("EnterWalk");
+				break;
+			case State.EATING:
+				SetTrigger("Eat");
+                timeOfEat = Time.time;
+				break;
+			case State.BEING_ABDUCTED:
+                break;
+			case State.FALLING:
+                StartCoroutine(Fall());
+				break;
+		}
+	}
+
+    private void ProcessState()
+    {
+		switch (currentState)
+		{
+			case State.IDLE:
+				AttemptChangeDestination();
+				break;
+			case State.WALKING:
+				ApproachDestination();
+				CheckReachDestination();
+				break;
+			case State.EATING:
+                if(Time.time > timeOfEat + 3)
+                {
+                    ChangeState(State.IDLE);
+                }
+				break;
+			case State.BEING_ABDUCTED:
+				transform.Translate(Vector3.up * abductSpeed * Time.deltaTime, Space.World);
+                transform.RotateAround(pivot.position, new Vector3(Random.Range(0f,1f), Random.Range(0f, 1f), Random.Range(0f, 1f)), rotSpeed);
+                rotSpeed += Time.deltaTime * 1.5f;
+
+
+				break;
+			case State.FALLING:
+				break;
+		}
+	}
+
+    float rotSpeed = 0;
+
+
+	string currentTrigger;
+	void SetTrigger(string triggerName)
+	{
+		if (!string.IsNullOrEmpty(currentTrigger))
+			animator.ResetTrigger(currentTrigger); // Clear the previous trigger
+
+		animator.SetTrigger(triggerName); // Set the new trigger
+		currentTrigger = triggerName; // Remember the new one
+	}
+
+    private IEnumerator RestoreScale(float time)
+    {
+        Vector3 startScale = transform.localScale;
+        Vector3 targetScale = this.startScale;
+
+        float t = 0;
+        while (t < time)
+        {
+            t += Time.deltaTime;
+            float normalizedTime = Mathf.Clamp01(t / time);
+            transform.localScale = Vector3.Lerp(startScale, targetScale, normalizedTime);
+            yield return null;
+        }
+        transform.localScale = targetScale;
+    }
+
+    private IEnumerator RestoreRotation(float time)
+    {
+        Quaternion startRotation = transform.rotation;
+        Quaternion targetRotation = Quaternion.identity;
+
+        float t = 0;
+        while (t < time)
+        {
+            t += Time.deltaTime;
+            float normalizedTime = Mathf.Clamp01(t / time);
+            transform.rotation = Quaternion.Lerp(startRotation, targetRotation, normalizedTime);
+            yield return null;
+        }
+        transform.rotation = targetRotation;
+    }
+
+    private IEnumerator Fall()
+    {
+        while (transform.position.y > startHeight)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - Time.deltaTime * fallSpeed, transform.position.z);
+            yield return null;
+        }
+        ChangeState(State.IDLE);
+        transform.position = new Vector3(transform.position.x, startHeight, transform.position.z);
     }
 }

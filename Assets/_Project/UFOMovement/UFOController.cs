@@ -30,6 +30,8 @@ public class UFOController : MonoBehaviour
         AttemptAttack();
         AttemptStartBeam();
         AttemptCompleteExtraction();
+
+        AttemptShrinkAbductable();
     }
     
     private void AttemptCompleteExtraction()
@@ -55,6 +57,27 @@ public class UFOController : MonoBehaviour
             if (distanceToTarget < hoveringTolerance)
             {
                 TargetReached();
+            }
+        }
+    }
+
+    private void AttemptShrinkAbductable()
+    {
+        if (attacking)
+        {
+            float height = abductorController.abductor.GetHeightAboveTarget();
+            float maxHeight = abductorController.abductor.startingDist;
+            float progress = 1 - Mathf.Clamp01(height / maxHeight);
+
+            if (progress > 0.8f)
+            {
+                float startScale = abductorController.abductor.activeTargetStartScale;
+                float endScale = abductorController.abductor.activeTargetStartScale * 0.1f;
+
+                float scaleProgress = Mathf.InverseLerp(0.8f, 1, progress);
+                float targetScale = Mathf.Lerp(startScale, endScale, scaleProgress);
+
+                abductorController.abductor.activeTarget.transform.localScale = Vector3.one * targetScale;
             }
         }
     }
