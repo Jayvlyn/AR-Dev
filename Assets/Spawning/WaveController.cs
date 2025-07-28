@@ -89,7 +89,7 @@ public class WaveController : MonoBehaviour
         {
             GameObject spawnable = spawnableThings[UnityEngine.Random.Range(0, spawnableThings.Count)];
             currentPoints -= value;
-            Instantiate(spawnable, GetSpawnPointInBoundsRandomly(), transform.rotation);
+            Instantiate(spawnable, GetSpawnPointInBoundsRandomly(), transform.rotation, transform);
             return;
         }
 
