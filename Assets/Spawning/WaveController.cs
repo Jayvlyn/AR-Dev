@@ -146,8 +146,13 @@ public class WaveController : MonoBehaviour
 
         if (pastMaxWave)
         {
-            if (enemyStrength % 8 == 0)
+            if (enemyStrength % 7 == 0)
             {
+                if (enemyStrength % 2 == 0)
+                { 
+                    enemyValues.maxPoints++;
+                }
+                enemyValues.pointRecoverLength *= .95f;
                 IncreaseWave();
             }
         }
