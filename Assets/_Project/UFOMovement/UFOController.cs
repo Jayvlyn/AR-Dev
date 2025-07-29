@@ -17,6 +17,8 @@ public class UFOController : MonoBehaviour
 
     [SerializeField] private GameObject explosionParticles;
 
+    [SerializeField] private Vector2 pitchMinMax;
+
     private void Start()
     {
         //grabber.attachTransform = MainAttachPoint.mainAttachPoint;
@@ -129,6 +131,7 @@ public class UFOController : MonoBehaviour
     {
         abductorController.LoseTarget();
         GameObject spawned = Instantiate(explosionParticles, transform.position, transform.rotation);
+        AudioController.instance.PlayExplosionOneShot(pitchMinMax, transform.position);
         Destroy(this.gameObject);
     }
 }
