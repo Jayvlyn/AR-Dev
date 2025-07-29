@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class UIManager : MonoBehaviour
     public GameObject scanPanel;
     public GameObject gamePanel;
     public GameObject endPanel;
+    [SerializeField] private TMP_Text scoreText;
 
     private void Awake()
     {
@@ -64,8 +66,9 @@ public class UIManager : MonoBehaviour
         endPanel.SetActive(false);
     }
 
-    public void ShowEndPanel()
+    public void ShowEndPanel(int waveNum)
     {
+        scoreText.text = "Game Over " + waveNum.ToString();
         startPanel.SetActive(false);
         scanPanel.SetActive(false);
         gamePanel.SetActive(false);

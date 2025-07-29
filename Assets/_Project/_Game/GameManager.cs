@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void OnGameEnd()
     {
-        UIManager.instance.ShowEndPanel();
+        UIManager.instance.ShowEndPanel(WaveController.instance.currentWave);
         gameActive = false;
     }
 

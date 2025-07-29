@@ -2123,6 +2123,7 @@ MonoBehaviour:
   scanPanel: {fileID: 1939016850}
   gamePanel: {fileID: 112898346}
   endPanel: {fileID: 810192768}
+  scoreText: {fileID: 318214531}
 --- !u!1 &1589595011
 GameObject:
   m_ObjectHideFlags: 0
