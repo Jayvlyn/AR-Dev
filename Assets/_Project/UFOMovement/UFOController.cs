@@ -128,6 +128,7 @@ public class UFOController : MonoBehaviour
     public void OnRemoval()
     {
         abductorController.LoseTarget();
+        GameObject spawned = Instantiate(explosionParticles, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }
 }
