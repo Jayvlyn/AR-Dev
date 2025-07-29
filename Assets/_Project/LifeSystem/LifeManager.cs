@@ -3,12 +3,19 @@ using UnityEngine;
 
 public class LifeManager : MonoBehaviour
 {
+    public static LifeManager instance;
+
     [SerializeField] private int initialCount;
     private LifeTracker tracker;
     [SerializeField] private LifeSpawner spawner;
     public static Action OnAllLivesLost;
 
     private void Awake()
+    {
+        instance = this;
+    }
+
+    public void SpawnCows()
     {
         tracker = new LifeTracker(initialCount);
         for (int i = 0; i < initialCount; i++)

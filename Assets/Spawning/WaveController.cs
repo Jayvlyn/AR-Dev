@@ -6,6 +6,8 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class WaveController : MonoBehaviour
 {
+    public static WaveController instance;
+
     public static float TimeSurvived;
 
     [Header("General things")]
@@ -24,8 +26,14 @@ public class WaveController : MonoBehaviour
 
     private int nextEnemyPointValueToSpawn;
 
-    private void Start()
+    private void Awake()
     {
+        instance = this;
+    }
+
+    public void OnStart()
+    {
+        TimeSurvived = 0;
         currentEnemyPoints = enemyValues.maxPoints;
         InitializeValues();
         nextEnemyPointValueToSpawn = SetNextSpawnValue(enemyValues.spawnableList);
@@ -33,17 +41,18 @@ public class WaveController : MonoBehaviour
 
     private void Update()
     {
-        TimeSurvived += Time.deltaTime;
+        if(GameManager.instance.gameActive)
+        {
+            TimeSurvived += Time.deltaTime;
 
-        CheckEnemyTimers();
-        CheckWaveTimers();
+            CheckEnemyTimers();
+            CheckWaveTimers();
+        }
     }
 
     private void CheckEnemyTimers()
     {
         enemySpawnTimer -= Time.deltaTime;
-        
-
 
         if (enemySpawnTimer <= 0 && currentEnemyPoints >= nextEnemyPointValueToSpawn)
         {
