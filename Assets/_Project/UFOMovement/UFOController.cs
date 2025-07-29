@@ -15,6 +15,8 @@ public class UFOController : MonoBehaviour
 
     [SerializeField] private XRGrabInteractable grabber;
 
+    [SerializeField] private GameObject explosionParticles;
+
     private void Start()
     {
         //grabber.attachTransform = MainAttachPoint.mainAttachPoint;
@@ -126,6 +128,7 @@ public class UFOController : MonoBehaviour
     public void OnRemoval()
     {
         abductorController.LoseTarget();
+        GameObject spawned = Instantiate(explosionParticles, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }
 }
