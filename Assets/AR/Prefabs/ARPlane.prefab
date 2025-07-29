@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7946577697316115984}
   m_Layer: 0
   m_Name: ARPlane
-  m_TagString: Untagged
+  m_TagString: WanderableArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,7 +84,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!33 &8008041563505176013

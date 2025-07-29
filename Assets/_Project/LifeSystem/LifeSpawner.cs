@@ -6,6 +6,11 @@ public class LifeSpawner : MonoBehaviour
     [SerializeField] private LifeAreaSpawnMethod spawnMethod;
     public void Spawn()
     {
-        var visual = Instantiate(visualPrefab, spawnMethod.GetSpawnPoint(), Quaternion.identity);
+        WanderableArea area = WanderableArea.activeWanderableArea;
+        int planeIndex = Random.Range(0, area.colliders.Count);
+
+        var visual = Instantiate(visualPrefab, spawnMethod.GetSpawnPoint(planeIndex), Quaternion.identity, transform);
+        WanderingMovement cow = visual.GetComponent<WanderingMovement>();
+        cow.planeIndex = planeIndex;
     }
 }

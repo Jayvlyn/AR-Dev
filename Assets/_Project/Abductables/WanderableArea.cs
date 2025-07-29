@@ -1,17 +1,38 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
+using Random = UnityEngine.Random;
 
 public class WanderableArea : MonoBehaviour
 {
     public static WanderableArea activeWanderableArea;
-    [SerializeField] private Collider area;
+    [HideInInspector] public List<Collider> colliders = new();
 
     private void Awake()
     {
         activeWanderableArea = this;
     }
 
-    public Vector3 GetRandomPosition()
+    [SerializeField] private ARPlaneManager arPlaneManager;
+    public void SetNewPlanes()
     {
+        colliders.Clear();
+        foreach (var trackable in arPlaneManager.trackables)
+        {
+            if (trackable.TryGetComponent(out Collider collider))
+            {
+                if (collider.transform.rotation.eulerAngles.z == 0)
+                {
+                    colliders.Add(collider);
+                }
+            }
+        }
+    }
+    public Vector3 GetRandomPosition(int planeIndex)
+    {
+        Collider area = colliders[planeIndex];
         Bounds bounds = area.bounds;
 
         Vector3 randomPoint = new Vector3(
