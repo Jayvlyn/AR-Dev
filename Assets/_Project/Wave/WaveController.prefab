@@ -77,7 +77,7 @@ MonoBehaviour:
       pointRecoverAmount: 1
       pointRecoverLength: 2.25
       timeBetweenSpawns: 1.15
-  - strengthToEnterWave: 5
+  - strengthToEnterWave: 10
     WaveValues:
       spawnableList:
       - objectToSpawn: {fileID: 1990950011816828631, guid: babccbf8f4f6cd24db6ea582ce106b07,
@@ -90,7 +90,7 @@ MonoBehaviour:
       pointRecoverAmount: 1
       pointRecoverLength: 2.2
       timeBetweenSpawns: 1.25
-  - strengthToEnterWave: 10
+  - strengthToEnterWave: 14
     WaveValues:
       spawnableList:
       - objectToSpawn: {fileID: 1990950011816828631, guid: babccbf8f4f6cd24db6ea582ce106b07,
@@ -103,7 +103,7 @@ MonoBehaviour:
       pointRecoverAmount: 2
       pointRecoverLength: 2.2
       timeBetweenSpawns: 1.2
-  - strengthToEnterWave: 15
+  - strengthToEnterWave: 19
     WaveValues:
       spawnableList:
       - objectToSpawn: {fileID: 1990950011816828631, guid: babccbf8f4f6cd24db6ea582ce106b07,
@@ -116,7 +116,7 @@ MonoBehaviour:
       pointRecoverAmount: 2
       pointRecoverLength: 2.1
       timeBetweenSpawns: 1.1
-  - strengthToEnterWave: 20
+  - strengthToEnterWave: 24
     WaveValues:
       spawnableList:
       - objectToSpawn: {fileID: 1990950011816828631, guid: babccbf8f4f6cd24db6ea582ce106b07,
@@ -129,7 +129,7 @@ MonoBehaviour:
       pointRecoverAmount: 2
       pointRecoverLength: 2.1
       timeBetweenSpawns: 1.1
-  - strengthToEnterWave: 26
+  - strengthToEnterWave: 30
     WaveValues:
       spawnableList:
       - objectToSpawn: {fileID: 1990950011816828631, guid: babccbf8f4f6cd24db6ea582ce106b07,
