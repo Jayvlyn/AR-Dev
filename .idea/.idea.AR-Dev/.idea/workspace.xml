@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f44af0f6-564f-4424-9910-d52c77cc33f8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/UFOMovement/Notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UFOMovement/Notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AR-Dev/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AR-Dev/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Abductables/WanderableArea.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Abductables/WanderableArea.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/LifeSystem/LifeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/LifeSystem/LifeManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/LifeSystem/LifeSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/LifeSystem/LifeSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/_Game/ARGameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/_Game/ARGameScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +106,7 @@
       <workItem from="1753380426733" duration="685000" />
       <workItem from="1753645148586" duration="363000" />
       <workItem from="1753721980340" duration="5415000" />
-      <workItem from="1753746709606" duration="2984000" />
+      <workItem from="1753746709606" duration="4431000" />
     </task>
     <servers />
   </component>
