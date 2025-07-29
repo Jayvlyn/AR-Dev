@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class WaveController : MonoBehaviour
 {

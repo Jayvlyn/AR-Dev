@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
 using Random = UnityEngine.Random;
 
 public class WanderableArea : MonoBehaviour
@@ -15,6 +14,11 @@ public class WanderableArea : MonoBehaviour
         activeWanderableArea = this;
     }
 
+    private void Update()
+    {
+        //GameManager.instance.text.text = GameManager.instance.scanning.ToString();
+    }
+
     [SerializeField] private ARPlaneManager arPlaneManager;
     public void SetNewPlanes()
     {
@@ -25,10 +29,7 @@ public class WanderableArea : MonoBehaviour
         {
             if (trackable.TryGetComponent(out Collider collider))
             {
-                if (collider.transform.rotation.eulerAngles.z == 0)
-                {
-                    colliders.Add(collider);
-                }
+                colliders.Add(collider);
             }
         }
     }
