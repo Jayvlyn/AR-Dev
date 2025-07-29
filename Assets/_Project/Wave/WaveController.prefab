@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 792862bfd43c5f444acf06f92178eb02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveLength: 5
+  waveLength: 10
+  <currentWave>k__BackingField: 0
   enemyWaveValues:
   - strengthToEnterWave: 1
     WaveValues:
@@ -52,20 +53,95 @@ MonoBehaviour:
       - objectToSpawn: {fileID: 1990950011816828631, guid: babccbf8f4f6cd24db6ea582ce106b07,
           type: 3}
         costToSpawn: 1
+      maxPoints: 3
+      pointRecoverAmount: 1
+      pointRecoverLength: 3
+      timeBetweenSpawns: 1.5
+  - strengthToEnterWave: 3
+    WaveValues:
+      spawnableList:
+      - objectToSpawn: {fileID: 1990950011816828631, guid: babccbf8f4f6cd24db6ea582ce106b07,
+          type: 3}
+        costToSpawn: 1
       maxPoints: 5
       pointRecoverAmount: 1
-      pointRecoverLength: 2
-      timeBetweenSpawns: 1
+      pointRecoverLength: 2.5
+      timeBetweenSpawns: 1.25
+  - strengthToEnterWave: 6
+    WaveValues:
+      spawnableList:
+      - objectToSpawn: {fileID: 1990950011816828631, guid: babccbf8f4f6cd24db6ea582ce106b07,
+          type: 3}
+        costToSpawn: 1
+      maxPoints: 6
+      pointRecoverAmount: 1
+      pointRecoverLength: 2.25
+      timeBetweenSpawns: 1.15
   - strengthToEnterWave: 5
     WaveValues:
       spawnableList:
-      - objectToSpawn: {fileID: 4084178252307637733, guid: f3629eb30a0a2c347a2b7baf0925d01e,
+      - objectToSpawn: {fileID: 1990950011816828631, guid: babccbf8f4f6cd24db6ea582ce106b07,
           type: 3}
         costToSpawn: 1
-      - objectToSpawn: {fileID: 6066483754205676490, guid: 17d550f0ee056db44b571895400ebd4d,
+      - objectToSpawn: {fileID: 1990950011816828631, guid: a99275a7e6a843043af6597c310faa0f,
+          type: 3}
+        costToSpawn: 4
+      maxPoints: 6
+      pointRecoverAmount: 1
+      pointRecoverLength: 2.2
+      timeBetweenSpawns: 1.25
+  - strengthToEnterWave: 10
+    WaveValues:
+      spawnableList:
+      - objectToSpawn: {fileID: 1990950011816828631, guid: babccbf8f4f6cd24db6ea582ce106b07,
+          type: 3}
+        costToSpawn: 1
+      - objectToSpawn: {fileID: 1990950011816828631, guid: a99275a7e6a843043af6597c310faa0f,
+          type: 3}
+        costToSpawn: 3
+      maxPoints: 7
+      pointRecoverAmount: 2
+      pointRecoverLength: 2.2
+      timeBetweenSpawns: 1.2
+  - strengthToEnterWave: 15
+    WaveValues:
+      spawnableList:
+      - objectToSpawn: {fileID: 1990950011816828631, guid: babccbf8f4f6cd24db6ea582ce106b07,
+          type: 3}
+        costToSpawn: 1
+      - objectToSpawn: {fileID: 1990950011816828631, guid: a99275a7e6a843043af6597c310faa0f,
+          type: 3}
+        costToSpawn: 3
+      maxPoints: 8
+      pointRecoverAmount: 2
+      pointRecoverLength: 2.1
+      timeBetweenSpawns: 1.1
+  - strengthToEnterWave: 20
+    WaveValues:
+      spawnableList:
+      - objectToSpawn: {fileID: 1990950011816828631, guid: babccbf8f4f6cd24db6ea582ce106b07,
+          type: 3}
+        costToSpawn: 1
+      - objectToSpawn: {fileID: 1990950011816828631, guid: a99275a7e6a843043af6597c310faa0f,
+          type: 3}
+        costToSpawn: 2
+      maxPoints: 8
+      pointRecoverAmount: 2
+      pointRecoverLength: 2.1
+      timeBetweenSpawns: 1.1
+  - strengthToEnterWave: 26
+    WaveValues:
+      spawnableList:
+      - objectToSpawn: {fileID: 1990950011816828631, guid: babccbf8f4f6cd24db6ea582ce106b07,
+          type: 3}
+        costToSpawn: 1
+      - objectToSpawn: {fileID: 1990950011816828631, guid: a99275a7e6a843043af6597c310faa0f,
           type: 3}
         costToSpawn: 2
       maxPoints: 10
-      pointRecoverAmount: 1
-      pointRecoverLength: 2
+      pointRecoverAmount: 3
+      pointRecoverLength: 1.7
       timeBetweenSpawns: 1
+  spawnArea:
+    m_Center: {x: 0, y: 0.4, z: 0}
+    m_Extent: {x: 0.93, y: 0.01, z: 0.97}
