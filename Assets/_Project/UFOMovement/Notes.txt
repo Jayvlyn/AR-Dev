@@ -14,7 +14,11 @@ AR INPUT
     Objects render infront of environment so we need to do something about far away objects and the tractor beam size
     
 Gameloop
-    Possibly a start screen
+    Start screen -> Scan Screen -> Game starts
+
+    After player presses start to begin the game, there will be a phase where the player it told to scan their play area to create planes for the cows to spawn on.
+    Once the player pressed a button to confirm their scan, it will move on to the game phase where the cows are spawned and the aliens pull up.
+
     Need to do something on death event call - can just show YOU DIED panel or move scene
     
 Effects

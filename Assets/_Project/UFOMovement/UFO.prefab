@@ -4977,6 +4977,7 @@ MonoBehaviour:
   abductorController: {fileID: 7262051983802105445}
   attackCycleTime: 3
   hoveringTolerance: 0.1
+  grabber: {fileID: 3169634872875656761}
   beam: {fileID: 1630187517755989442}
 --- !u!114 &8065927094481885023
 MonoBehaviour:
@@ -5009,6 +5010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ufoController: {fileID: 5991145911805915043}
+  timeToRestoreRotationAfterThrow: 1
   OnSmacked:
     m_PersistentCalls:
       m_Calls:
@@ -5218,19 +5220,7 @@ MonoBehaviour:
       m_Calls: []
   m_Activated:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
@@ -5279,7 +5269,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 4
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
