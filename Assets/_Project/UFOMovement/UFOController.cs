@@ -19,6 +19,8 @@ public class UFOController : MonoBehaviour
 
     [SerializeField] private Vector2 pitchMinMax;
 
+    [SerializeField] private AudioSource audioSource;
+
     private void Start()
     {
         //grabber.attachTransform = MainAttachPoint.mainAttachPoint;
@@ -28,6 +30,7 @@ public class UFOController : MonoBehaviour
     {
         allowedToAttack = false;
         abductorController.LoseTarget();
+        EndAbductAudio();
         beam.Hide();
     }
 
@@ -100,6 +103,7 @@ public class UFOController : MonoBehaviour
         canStartBeam = false;
         attacking = true;
         beam.Reveal();
+        StartAbductAudio();
         abductorController.Abduct();
     }
 
@@ -107,11 +111,20 @@ public class UFOController : MonoBehaviour
     {
         attacking = false;
         beam.Hide();
+        EndAbductAudio();
         abductorController.FinalizeAbduction();
         flightMovementController.GoIdle();
     }
 
-    
+    private void StartAbductAudio()
+    {
+        audioSource.Play();
+    }
+
+    private void EndAbductAudio()
+    {
+        audioSource.Stop();
+    }
 
     private void AttemptAttack()
     {

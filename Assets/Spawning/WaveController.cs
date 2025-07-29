@@ -11,7 +11,7 @@ public class WaveController : MonoBehaviour
     [Header("General things")]
     [SerializeField] private float waveLength;
     private float waveTimer;
-    private int currentWave;
+    [field: SerializeField] public int currentWave { get; private set; }
 
     [Header("Enemy things")]
     private WaveValues enemyValues;
@@ -148,6 +148,7 @@ public class WaveController : MonoBehaviour
             enemySpawnTimer = 0;
             pointRecoverTimer = enemyValues.pointRecoverLength;
             currentWave++;
+            AudioController.instance.PlayWaveStartOneShot();
         }
     }
 }

@@ -1243,6 +1243,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c92cb171a18357f49ab241c0cdf8d901, type: 3}
   explosions:
   - {fileID: 8300000, guid: 0d03460d332abef488da1b2a4f194ebe, type: 3}
+  waveStart: {fileID: 8300000, guid: ba840696f0770454e85fb887b00440f6, type: 3}
 --- !u!4 &499530137
 Transform:
   m_ObjectHideFlags: 0

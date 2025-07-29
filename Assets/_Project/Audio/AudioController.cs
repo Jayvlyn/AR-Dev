@@ -9,6 +9,7 @@ public class AudioController : MonoBehaviour
     [SerializeField] private List<AudioClip> mooList = new();
 
     [SerializeField] private List<AudioClip> explosions = new();
+    [SerializeField] private AudioClip waveStart;
 
     private void Awake()
     {
@@ -36,6 +37,11 @@ public class AudioController : MonoBehaviour
     public void PlayExplosionOneShot(Vector2 pitchMinMax, Vector3 position)
     {
         PlayOneShotAtLocation(explosions[Random.Range(0, mooList.Count)], pitchMinMax, position);
+    }
+
+    public void PlayWaveStartOneShot()
+    {
+        PlayOneShotAtLocation(waveStart, new Vector2(1, 1), Vector3.zero);
     }
 
 }
