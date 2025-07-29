@@ -26,11 +26,13 @@ public class GameManager : MonoBehaviour
         scanning = false;
         LifeManager.instance.SpawnCows();
         WaveController.instance.OnStart();
+        gameActive = true;
     }
 
     public void OnGameEnd()
     {
         UIManager.instance.ShowEndPanel();
+        gameActive = false;
     }
 
     public void EnablePlaneManager()
