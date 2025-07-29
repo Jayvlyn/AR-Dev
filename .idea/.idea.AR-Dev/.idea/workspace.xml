@@ -38,7 +38,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.codeium.enabled": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Consumables",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -100,7 +100,7 @@
       <workItem from="1753380426733" duration="685000" />
       <workItem from="1753645148586" duration="363000" />
       <workItem from="1753721980340" duration="5415000" />
-      <workItem from="1753746709606" duration="5011000" />
+      <workItem from="1753746709606" duration="5567000" />
     </task>
     <servers />
   </component>
