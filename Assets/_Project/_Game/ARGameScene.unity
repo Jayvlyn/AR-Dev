@@ -809,7 +809,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f7c8f86dc97bb4fb4d4ece903d66db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 762669967}
   planeManager: {fileID: 385252225}
   gameActive: 0
   scanning: 0
@@ -1573,7 +1572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &762669966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1881,7 +1880,7 @@ PrefabInstance:
     - target: {fileID: 969917111675002248, guid: 2bd374fbc4288e8439bbbb0e6996463b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6020574997533708040, guid: 2bd374fbc4288e8439bbbb0e6996463b,
         type: 3}

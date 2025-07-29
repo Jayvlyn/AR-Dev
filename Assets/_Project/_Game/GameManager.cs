@@ -6,7 +6,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public TextMeshProUGUI text;
 
     [SerializeField] private ARPlaneManager planeManager;
 
@@ -16,6 +15,16 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+    
+    private void OnEnable()
+    {
+        LifeManager.OnAllLivesLost += OnGameEnd;
+    }
+
+    private void OnDisable()
+    {
+        LifeManager.OnAllLivesLost -= OnGameEnd;
     }
 
     public void StartScan()
@@ -41,11 +50,11 @@ public class GameManager : MonoBehaviour
 
     public void EnablePlaneManager()
     {
-        //planeManager.enabled = true;
+        planeManager.enabled = true;
     }
 
     public void DisablePlaneManager()
     {
-        //planeManager.enabled = false;
+        planeManager.enabled = false;
     }
 }
