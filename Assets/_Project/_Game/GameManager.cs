@@ -57,4 +57,9 @@ public class GameManager : MonoBehaviour
     {
         planeManager.enabled = false;
     }
+
+    public void ResetGame()
+    {
+        WaveController.instance.ClearEnemies();
+    }
 }

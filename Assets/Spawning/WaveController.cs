@@ -33,8 +33,10 @@ public class WaveController : MonoBehaviour
 
     public void OnStart()
     {
+        pastMaxWave = false;
+        currentWave = 0;
+        enemyStrength = 0;
         TimeSurvived = 0;
-        currentEnemyPoints = enemyValues.maxPoints;
         InitializeValues();
         nextEnemyPointValueToSpawn = SetNextSpawnValue(enemyValues.spawnableList);
     }
@@ -171,6 +173,14 @@ public class WaveController : MonoBehaviour
         pointRecoverTimer = enemyValues.pointRecoverLength;
         currentWave++;
         AudioController.instance.PlayWaveStartOneShot();
+    }
+
+    public void ClearEnemies()
+    {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
     }
 }
 

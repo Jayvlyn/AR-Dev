@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
     public void OnRestartClicked() // button on end screen to play again with same setup
     {
         ShowGamePanel();
+        GameManager.instance.ResetGame();
         GameManager.instance.StartGame();
     }
 
@@ -39,9 +40,10 @@ public class UIManager : MonoBehaviour
     {
         ShowStartPanel();
         GameManager.instance.DisablePlaneManager();
+        GameManager.instance.ResetGame();
     }
     #endregion
-
+    
     private void ShowStartPanel()
     {
         startPanel.SetActive(true);
