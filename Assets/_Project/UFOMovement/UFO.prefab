@@ -4978,6 +4978,8 @@ MonoBehaviour:
   attackCycleTime: 3
   hoveringTolerance: 0.1
   grabber: {fileID: 3169634872875656761}
+  explosionParticles: {fileID: 224258268108036577, guid: ec0bea2056e097345abe8272ce5cc2e7,
+    type: 3}
   beam: {fileID: 1630187517755989442}
 --- !u!114 &8065927094481885023
 MonoBehaviour:
