@@ -18,6 +18,8 @@ public class WanderableArea : MonoBehaviour
     [SerializeField] private ARPlaneManager arPlaneManager;
     public void SetNewPlanes()
     {
+        if (!GameManager.instance.scanning) return;
+
         colliders.Clear();
         foreach (var trackable in arPlaneManager.trackables)
         {

@@ -2,16 +2,23 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
+
     public GameObject startPanel;
     public GameObject scanPanel;
     public GameObject gamePanel;
     public GameObject endPanel;
 
+    private void Awake()
+    {
+        instance = this;
+    }
 
     #region BUTTON EVENTS
     public void OnStartClicked() // start button on main menu that will advance player to scan screen where they scan environment before starting actual game
     {
         ShowScanPanel();
+        GameManager.instance.StartScan();
     }
 
     public void OnConfirmScanClicked() // on scan screen to finish scanning and start game
@@ -23,11 +30,13 @@ public class UIManager : MonoBehaviour
     public void OnRestartClicked() // button on end screen to play again with same setup
     {
         ShowGamePanel();
+        GameManager.instance.StartGame();
     }
 
     public void OnMainMenuClicked() // button on end screen to send back to main menu so player can rescan
     {
         ShowStartPanel();
+        GameManager.instance.DisablePlaneManager();
     }
     #endregion
 
@@ -55,7 +64,7 @@ public class UIManager : MonoBehaviour
         endPanel.SetActive(false);
     }
 
-    private void ShowEndPanel()
+    public void ShowEndPanel()
     {
         startPanel.SetActive(false);
         scanPanel.SetActive(false);
