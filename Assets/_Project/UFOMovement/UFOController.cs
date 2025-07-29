@@ -15,6 +15,8 @@ public class UFOController : MonoBehaviour
 
     [SerializeField] private XRGrabInteractable grabber;
 
+    [SerializeField] private GameObject explosionParticles;
+
     private void Start()
     {
         //grabber.attachTransform = MainAttachPoint.mainAttachPoint;
