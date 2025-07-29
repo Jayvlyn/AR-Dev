@@ -4,13 +4,13 @@ UFO Collision Problem.
     
 Consumables
     Need spawning for those
+    And Building item prefabs
     
 Spawner
     Need to build 3 health mothership UFO and add to spawner
     Spawner is throwing errors
     
 AR INPUT
-    Need to test clicking on the screen when in AR mode on tablet
     Objects render infront of environment so we need to do something about far away objects and the tractor beam size
     
 Gameloop
