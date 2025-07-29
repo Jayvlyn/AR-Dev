@@ -51,11 +51,13 @@ public class GameManager : MonoBehaviour
     public void EnablePlaneManager()
     {
         planeManager.enabled = true;
+        WanderableArea.activeWanderableArea.ShowPlanes();
     }
 
     public void DisablePlaneManager()
     {
         planeManager.enabled = false;
+        WanderableArea.activeWanderableArea.HidePlanes();
     }
 
     public void ResetGame()

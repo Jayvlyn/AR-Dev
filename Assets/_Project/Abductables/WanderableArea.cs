@@ -8,6 +8,7 @@ public class WanderableArea : MonoBehaviour
 {
     public static WanderableArea activeWanderableArea;
     [HideInInspector] public List<Collider> colliders = new();
+    [HideInInspector] public List<ARPlaneMeshVisualizer> visuals = new();
 
     private void Awake()
     {
@@ -25,14 +26,35 @@ public class WanderableArea : MonoBehaviour
         if (!GameManager.instance.scanning) return;
 
         colliders.Clear();
+        visuals.Clear();
         foreach (var trackable in arPlaneManager.trackables)
         {
             if (trackable.TryGetComponent(out Collider collider))
             {
                 colliders.Add(collider);
             }
+            if (trackable.TryGetComponent(out ARPlaneMeshVisualizer visualizer))
+            {
+                visuals.Add(visualizer);
+            }
         }
     }
+
+    public void HidePlanes()
+    {
+        foreach(var visual in visuals)
+        {
+            visual.enabled = false;
+        }
+    }
+
+    public void ShowPlanes()
+    {
+		foreach (var visual in visuals)
+		{
+            visual.enabled = true;
+		}
+	}
 
     private int maxLoops = 50;
     public Vector3 GetRandomPosition(int planeIndex)

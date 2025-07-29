@@ -66,6 +66,7 @@ public class UIManager : MonoBehaviour
         scanPanel.SetActive(false);
         gamePanel.SetActive(true);
         endPanel.SetActive(false);
+
     }
 
     public void ShowEndPanel(int waveNum)
