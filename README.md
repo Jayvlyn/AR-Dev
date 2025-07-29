@@ -8,9 +8,9 @@ Kian Frodente
 Use Case: AR Enjoyment
 
 Technical details:
-
-Unity XR toolkit
-Horizontal plane tracking
+      Unity XR toolkit
+      Horizontal plane tracking
+      Unity
 
 Start and build project to Android device
       
