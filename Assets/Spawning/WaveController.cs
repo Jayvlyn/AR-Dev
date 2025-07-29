@@ -11,6 +11,8 @@ public class WaveController : MonoBehaviour
     [Header("General things")]
     [SerializeField] private float waveLength;
     private float waveTimer;
+    private bool pastMaxWave;
+
     [field: SerializeField] public int currentWave { get; private set; }
 
     [Header("Enemy things")]
@@ -137,19 +139,33 @@ public class WaveController : MonoBehaviour
 
         if (currentWave >= enemyWaveValues.Count || enemyWaveValues[currentWave] == null)
         {
-            Debug.LogWarning($"There isn't a wave {currentWave}");
+            //Debug.LogWarning($"There isn't a wave {currentWave}");
+            pastMaxWave = true;
             return;
         }
 
-        if (enemyStrength == enemyWaveValues[currentWave].strengthToEnterWave)
+        if (pastMaxWave)
+        {
+            if (enemyStrength % 8 == 0)
+            {
+                IncreaseWave();
+            }
+        }
+        else if (enemyStrength == enemyWaveValues[currentWave].strengthToEnterWave)
         {
             enemyValues = enemyWaveValues[currentWave].GetWaveValues();
-            currentEnemyPoints = enemyValues.maxPoints;
-            enemySpawnTimer = 0;
-            pointRecoverTimer = enemyValues.pointRecoverLength;
-            currentWave++;
-            AudioController.instance.PlayWaveStartOneShot();
+            IncreaseWave();
         }
+    }
+
+    private void IncreaseWave()
+    {
+        waveLength *= .98f;
+        currentEnemyPoints = enemyValues.maxPoints;
+        enemySpawnTimer = 0;
+        pointRecoverTimer = enemyValues.pointRecoverLength;
+        currentWave++;
+        AudioController.instance.PlayWaveStartOneShot();
     }
 }
 
