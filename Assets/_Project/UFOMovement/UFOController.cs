@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class UFOController : MonoBehaviour
 {
@@ -11,6 +12,13 @@ public class UFOController : MonoBehaviour
     private bool attacking;
     private bool canStartBeam;
     private bool allowedToAttack = true;
+
+    [SerializeField] private XRGrabInteractable grabber;
+
+    private void Start()
+    {
+        //grabber.attachTransform = MainAttachPoint.mainAttachPoint;
+    }
 
     public void StopAttacking()
     {

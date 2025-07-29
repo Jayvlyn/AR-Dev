@@ -1,9 +1,27 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class LockOnTarget : MonoBehaviour
 {
+    
+    private IEnumerator RestoreRotation(float time)
+    {
+        Quaternion startRotation = transform.rotation;
+        Quaternion targetRotation = Quaternion.identity;
+
+        float t = 0;
+        while (t < time)
+        {
+            t += Time.deltaTime;
+            float normalizedTime = Mathf.Clamp01(t / time);
+            transform.rotation = Quaternion.Lerp(startRotation, targetRotation, normalizedTime);
+            yield return null;
+        }
+        transform.rotation = targetRotation;
+    }
+    
     private bool locked;
     [SerializeField] private UFOController ufoController;
     public void Lock()
@@ -12,11 +30,14 @@ public class LockOnTarget : MonoBehaviour
         ufoController.StopAttacking();
     }
 
+    [SerializeField] private float timeToRestoreRotationAfterThrow = 1f;
     public void Unlock()
     {
         locked = false;
         ufoController.AllowAttacking();
+        StartCoroutine(RestoreRotation(timeToRestoreRotationAfterThrow));
     }
+
 
     private void OnCollisionEnter(Collision other)
     {
