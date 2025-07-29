@@ -125,7 +125,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -222,6 +222,7 @@ MonoBehaviour:
   destinationChangeDelay: {x: 4.1616783, y: 13.0539}
   animator: {fileID: 4408642325296592784}
   pivot: {fileID: 7050139664350216170}
+  planeIndex: 0
 --- !u!95 &4408642325296592784
 Animator:
   serializedVersion: 7

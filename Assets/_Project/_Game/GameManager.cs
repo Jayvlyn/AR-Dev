@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        DisablePlaneManager();
         scanning = false;
         LifeManager.instance.SpawnCows();
         WaveController.instance.OnStart();
