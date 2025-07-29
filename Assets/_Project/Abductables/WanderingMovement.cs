@@ -27,6 +27,7 @@ public class WanderingMovement : MonoBehaviour
     private float startHeight;
     [HideInInspector] public int planeIndex;
 
+    [SerializeField] private Vector2 eatingPitchMinMax;
     public void GoUpwards()
     {
         ChangeState(State.BEING_ABDUCTED);
@@ -106,6 +107,7 @@ public class WanderingMovement : MonoBehaviour
 				SetTrigger("StopWalk");
 				break;
 			case State.EATING:
+                AudioController.instance.PlayEatingOneShot(eatingPitchMinMax, transform.position);
 				break;
 			case State.BEING_ABDUCTED:
                 rotSpeed = 0;

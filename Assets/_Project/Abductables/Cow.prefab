@@ -224,6 +224,7 @@ MonoBehaviour:
   animator: {fileID: 4408642325296592784}
   pivot: {fileID: 7050139664350216170}
   planeIndex: 0
+  eatingPitchMinMax: {x: 0.9, y: 1.3}
 --- !u!95 &4408642325296592784
 Animator:
   serializedVersion: 7
