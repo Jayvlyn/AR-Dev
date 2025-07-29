@@ -25,6 +25,7 @@ public class WanderingMovement : MonoBehaviour
     private float timeOfEat;
     private Vector3 startScale;
     private float startHeight;
+    [HideInInspector] public int planeIndex;
 
     public void GoUpwards()
     {
@@ -122,7 +123,7 @@ public class WanderingMovement : MonoBehaviour
 			case State.IDLE:
 				break;
 			case State.WALKING:
-				targetPosition = WanderableArea.activeWanderableArea.GetRandomPosition();
+				targetPosition = WanderableArea.activeWanderableArea.GetRandomPosition(planeIndex);
 				reachedDestination = false;
 				SetTrigger("EnterWalk");
 				break;
