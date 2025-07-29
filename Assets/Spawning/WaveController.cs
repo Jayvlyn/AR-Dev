@@ -137,7 +137,7 @@ public class WaveController : MonoBehaviour
     {
         enemyStrength++;
 
-        if (enemyWaveValues[currentWave] == null)
+        if (currentWave >= enemyWaveValues.Count || enemyWaveValues[currentWave] == null)
         {
             Debug.LogWarning($"There isn't a wave {currentWave}");
             return;

@@ -708,6 +708,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2842265789783030680, guid: 48cb3fb68c91eb94999fd99957eb0cae,
+        type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1731,6 +1736,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1104373510}
     m_Modifications:
+    - target: {fileID: 969917111675002248, guid: 2bd374fbc4288e8439bbbb0e6996463b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6020574997533708040, guid: 2bd374fbc4288e8439bbbb0e6996463b,
         type: 3}
       propertyPath: m_Name
@@ -2316,24 +2326,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2584956243544159675, guid: 25f5cef9a097a40418ae43f7f1871f0a,
         type: 3}
+      propertyPath: spawnArea.m_Center.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584956243544159675, guid: 25f5cef9a097a40418ae43f7f1871f0a,
+        type: 3}
       propertyPath: spawnArea.m_Extent.x
-      value: 2.62
+      value: 0.93
       objectReference: {fileID: 0}
     - target: {fileID: 2584956243544159675, guid: 25f5cef9a097a40418ae43f7f1871f0a,
         type: 3}
       propertyPath: spawnArea.m_Extent.y
-      value: 0.19
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2584956243544159675, guid: 25f5cef9a097a40418ae43f7f1871f0a,
         type: 3}
       propertyPath: spawnArea.m_Extent.z
-      value: 2.23
+      value: 0.97
       objectReference: {fileID: 0}
     - target: {fileID: 2584956243544159675, guid: 25f5cef9a097a40418ae43f7f1871f0a,
         type: 3}
       propertyPath: enemyWaveValues.Array.data[1].WaveValues.spawnableList.Array.data[0].objectToSpawn
       value: 
       objectReference: {fileID: 1990950011816828631, guid: babccbf8f4f6cd24db6ea582ce106b07,
+        type: 3}
+    - target: {fileID: 2584956243544159675, guid: 25f5cef9a097a40418ae43f7f1871f0a,
+        type: 3}
+      propertyPath: enemyWaveValues.Array.data[1].WaveValues.spawnableList.Array.data[1].objectToSpawn
+      value: 
+      objectReference: {fileID: 1990950011816828631, guid: a99275a7e6a843043af6597c310faa0f,
         type: 3}
     - target: {fileID: 4493767444805396851, guid: 25f5cef9a097a40418ae43f7f1871f0a,
         type: 3}

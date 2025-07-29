@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  moveSpeed: 1
+  moveSpeed: 0.1
   abductSpeed: 0.1
   fallSpeed: 1
   tolerance: 0.5

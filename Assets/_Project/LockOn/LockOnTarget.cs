@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.XR.ARFoundation;
 
 public class LockOnTarget : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class LockOnTarget : MonoBehaviour
             yield return null;
         }
         transform.rotation = targetRotation;
+        //ARPlaneManager obj;
+        //obj.
     }
     
     private bool locked;
