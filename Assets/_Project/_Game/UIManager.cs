@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public void OnConfirmScanClicked() // on scan screen to finish scanning and start game
     {
         ShowGamePanel();
+        GameManager.instance.StartGame();
     }
 
     public void OnRestartClicked() // button on end screen to play again with same setup
