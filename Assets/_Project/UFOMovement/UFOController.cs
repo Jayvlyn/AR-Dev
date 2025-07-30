@@ -20,6 +20,7 @@ public class UFOController : MonoBehaviour
     [SerializeField] private Vector2 pitchMinMax;
 
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private TractorBeam beam;
 
     private void Start()
     {
@@ -97,7 +98,6 @@ public class UFOController : MonoBehaviour
         }
     }
 
-    [SerializeField] private TractorBeam beam;
     private void TargetReached()
     {
         canStartBeam = false;

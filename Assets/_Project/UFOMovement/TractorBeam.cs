@@ -1,25 +1,32 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TractorBeam : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem particles;
-    [SerializeField] private GameObject tractorBeam;
+    [SerializeField] private List<ParticleSystem> particles = new();
 
     private void Awake()
     {
-        particles.Stop();
+        foreach(ParticleSystem particle in particles)
+        {
+            particle.Stop();
+        }
     }
 
     public void Reveal()
     {
-        particles.Play();
-        tractorBeam.SetActive(true);
+        foreach(ParticleSystem particle in particles)
+        {
+            particle.Play();
+        }
     }
 
     public void Hide()
     {
-        particles.Stop();
-        tractorBeam.SetActive(false);
+        foreach (ParticleSystem particle in particles)
+        {
+            particle.Stop();
+        }
     }
 }
